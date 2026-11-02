@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import Submit from './pages/Submit'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-
+import Trends from './pages/Trends'
 function App() {
   const [crops, setCrops] = useState([])
   const [markets, setMarkets] = useState([])
@@ -56,12 +56,14 @@ function App() {
         ) : (
           <>
             <NavLink to="/submit">Submit a price</NavLink>
+            <NavLink to="/trends">Trends</NavLink>
             <button className="nav-button" onClick={logout}>Log out</button>
           </>
         )}
       </nav>
 
       <Routes>
+        <Route path="/trends" element={<Trends crops={crops} markets={markets} prices={prices} />} />
         <Route path="/" element={<Home crops={crops} markets={markets} prices={prices} />} />
         <Route path="/submit" element={<Submit crops={crops} markets={markets} token={token} loadPrices={loadPrices} />} />
         <Route path="/login" element={<Login saveToken={saveToken} />} />
